@@ -1,5 +1,7 @@
-export class Identificacao {
-    nome: string = '';
-    raca: string = "";
-    classe: string = '';
-  }
+class Identificacao {
+  nome: string = '';
+  raca: string = "";
+  classe: string = '';
+}
+
+export { Identificacao }

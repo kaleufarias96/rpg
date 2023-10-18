@@ -14,10 +14,14 @@ function menucriar() {
 
     const armaNome = teclado("Digite o nome da sua arma: ")
 
-    menuBattle();
-
     protagonista = new Personagem(nome, raca, classe, armaTipo, armaNome);
+    menuBattle();
 
 }
 
-export { menucriar }
+function mostrarStatus() {
+    console.log(protagonista);
+
+}
+
+export { menucriar, mostrarStatus }

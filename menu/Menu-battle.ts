@@ -1,5 +1,6 @@
 import prompt from "prompt-sync";
 import { Personagem } from "../src/Personagem";
+import { mostrarStatus } from "./criar";
 
 let protagonista: Personagem;
 let continua = true;
@@ -17,13 +18,14 @@ function menuBattle() {
         console.log("| 9. Sair                             |");
         console.log("=======================================");
 
-        opcao = +digite("Escolha uma opção: ");
 
         const escolha: number = +digite("Escolha uma opção: ")
 
         switch (escolha) {
             case 1:
-                console.table(protagonista)
+                console.log("entrou no case 1");
+                mostrarStatus();
+
                 break;
 
             case 2:
@@ -41,6 +43,7 @@ function menuBattle() {
                 }
             case 9:
                 console.log("Sair ...");
+                throw new Error("Saindo do jogo");
                 break;
             default:
                 break;

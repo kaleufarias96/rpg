@@ -4,11 +4,11 @@ import { menucriar } from "./criar";
 const teclado = PromptSync();
 let opcao: number = 0;
 
-export function menuinicial() {
+function menuinicial() {
     while (opcao != 9) {
         console.log("======Bem vindo ao jogo!======");
         console.log("| 1 - Criar char             |");
-        console.log("| 3 - Sair                   |");
+        console.log("| 2 - Sair                   |");
 
         let opcao = teclado("Digite uma opção: ");
 
@@ -16,10 +16,14 @@ export function menuinicial() {
             case "1":
                 menucriar();
                 break;
-
+            case "2":
+                console.log("Opção 2");
+                break;
             default:
                 console.log("Opção inválida!");
                 break;
         }
     }
 }
+
+export { menuinicial };
