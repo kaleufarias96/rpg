@@ -1,11 +1,8 @@
-class Archer {
-    constructor(
-        public nome: string,
-        public vida: number,
-        public stamina: number,
-        public ataque: number,
-        public defesa: number
-    ) { }
+import { Principal } from "./Principal";
+class Archer extends Principal {
+    private stamina: number = 100;
+    private Arma: string = "arco";
+    private _dano: number = 65;
+    private _defesa: number = 43;
 }
-
 export { Archer }

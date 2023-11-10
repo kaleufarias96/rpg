@@ -23,9 +23,9 @@ function menuBattle() {
 
         switch (escolha) {
             case 1:
-                console.log("entrou no case 1");
-                mostrarStatus();
-
+                
+            mostrarStatus();
+                
                 break;
 
             case 2:
@@ -42,7 +42,7 @@ function menuBattle() {
                     console.log("Game over! Treino em excesso!");
                 }
             case 9:
-                console.log("Sair ...");
+                
                 throw new Error("Saindo do jogo");
                 break;
             default:

@@ -1,8 +1,11 @@
 class Arma {
   nome: string = '';
-  nivel: number = 0;
-  tipo: string = '';
-  dano: number = 0;
+  tipo?: string;
+  constructor(
+    public nivel: number,
+    public dano: number,
+    private _durabilidade: number,
+  ) { }
 }
 
 export { Arma }

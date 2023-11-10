@@ -7,7 +7,7 @@ class Personagem {
   identificacao: Identificacao = new Identificacao();
   status: Status = new Status();
 
-  arma: Arma = new Arma();
+  arma: Arma = new Arma(1, 1, 1);
 
   constructor(nome: string, raca: string, classe: string, armaTipo: string, armaNome: string) {
     this.identificacao.nome = nome;

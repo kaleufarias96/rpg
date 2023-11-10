@@ -20,7 +20,7 @@ function menuinicial() {
                 console.log("Opção 2");
                 break;
             default:
-                console.log("Opção inválida!");
+                throw new Error("Saindo do jogo");
                 break;
         }
     }
