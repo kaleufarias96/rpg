@@ -1,54 +1,41 @@
-import { Arma } from "./Arma";
 import { Identificacao } from "./Identificacao";
-import { Status } from "./status";
 import { Util } from "../Util";
+import { Guerreiro } from "./classes/Guerreiro";
 
 class Personagem {
-  identificacao: Identificacao = new Identificacao();
-  status: Status = new Status();
+  score = 0
+  identificacao: Identificacao
 
-  arma: Arma = new Arma(1, 1, 1);
-
-  constructor(nome: string, raca: string, classe: string, armaTipo: string, armaNome: string) {
-    this.identificacao.nome = nome;
-    this.identificacao.raca = raca;
-    this.identificacao.classe = classe;
-    this.arma.nome = armaNome;
-    this.arma.tipo = armaTipo;
-
-    this.status.armadura = 1;
-    this.status.ataque = 1;
-    this.status.defesa = Util.randomizar(1, 100);
-    this.status.intelecto = Util.randomizar(1, 100)
-    this.status.mana = this.status.intelecto * 4.5;
-    this.status.nivel = 1;
-    this.status.poderDeAtaque = this.status.ataque * 3.5;
-    this.status.stamina = Util.randomizar(1, 100);
-    this.status.vida = Util.randomizar(10, 1000)
-    this.arma.nivel = Util.randomizar(1, 6)
-    this.arma.dano = Math.round(this.arma.nivel * Util.randomizar(1, 10));
+  constructor(identificacao: Identificacao) {
+    this.identificacao = identificacao
   }
-
-  treinarAtaque(): boolean {
-    let continua = true;
-    this.status.ataque = Math.round(this.status.ataque * 1.1);
-    this.status.stamina = Math.round(this.status.stamina - Util.randomizar(10, 20));
-    if (this.status.stamina <= 0) {
-      continua = false;
+  
+  atacar(inimigo: Personagem): void {
+    const danoArma = this.identificacao.classe.arma.dano
+    const danoPersonagem = this.identificacao.classe.ataque
+    const danoTotal = danoArma + danoPersonagem
+    
+    const defesaInimigo = inimigo.identificacao.classe.defesa
+    
+    const dano = danoTotal - defesaInimigo
+    
+    if (dano > 0) {
+      inimigo.identificacao.classe.vida -= dano
     }
-    return continua;
   }
 
-  treinarDefesa(tempoEmHoras: number): boolean {
+  async treinarAtaque(tempoEmHoras: number): Promise<boolean> {
+    return this.identificacao.classe.treinarAtaque(tempoEmHoras)
+  }
 
-    this.status.defesa +=
-      Math.round(Util.randomizar(1, tempoEmHoras) * (1.1 * this.status.defesa))
-    this.status.stamina -=
-      Math.round(Util.randomizar(1, tempoEmHoras)) * (this.status.stamina * 0.1)
-
-    const continua = this.status.stamina > 0
-    return continua;
+  async treinarDefesa(tempoEmHoras: number): Promise<boolean> {
+    return this.identificacao.classe.treinarDefesa(tempoEmHoras)
+  }
+  
+  async descansar(tempoEmHoras: number): Promise<boolean> {
+    return this.identificacao.classe.descansar(tempoEmHoras)
   }
 
 }
+
 export { Personagem }

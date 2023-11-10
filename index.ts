@@ -1,3 +1,6 @@
-import { menuinicial } from "./menu/Menu-inicial";
+import { menuPersonagem } from "./src/menu/menu-personagem";
+import { menuInicial } from "./src/menu/menu-inicial";
 
-menuinicial();
+const personagem = menuInicial();
+
+menuPersonagem(personagem!);
