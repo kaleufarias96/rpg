@@ -3,8 +3,8 @@ import { Util } from "../Util";
 import { Guerreiro } from "./classes/Guerreiro";
 
 class Personagem {
-  score = 0
-  identificacao: Identificacao
+  public score = 0
+  public identificacao: Identificacao
 
   constructor(identificacao: Identificacao) {
     this.identificacao = identificacao
@@ -24,16 +24,16 @@ class Personagem {
     }
   }
 
-  async treinarAtaque(tempoEmHoras: number): Promise<boolean> {
-    return this.identificacao.classe.treinarAtaque(tempoEmHoras)
+  async treinarAtaque(tempoEmHoras: number) {
+    await this.identificacao.classe.treinarAtaque(tempoEmHoras)
   }
 
-  async treinarDefesa(tempoEmHoras: number): Promise<boolean> {
-    return this.identificacao.classe.treinarDefesa(tempoEmHoras)
+  async treinarDefesa(tempoEmHoras: number) {
+    await this.identificacao.classe.treinarDefesa(tempoEmHoras)
   }
   
-  async descansar(tempoEmHoras: number): Promise<boolean> {
-    return this.identificacao.classe.descansar(tempoEmHoras)
+  async descansar(tempoEmHoras: number) {
+    await this.identificacao.classe.descansar(tempoEmHoras)
   }
 
 }

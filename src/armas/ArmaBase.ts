@@ -1,10 +1,14 @@
 class ArmaBase {
-  tipo: string
-  dano: number
+  public tipo: string
+  public dano: number
   
   constructor(valores: { tipo: string, dano: number }) {
     this.tipo = valores.tipo
     this.dano = valores.dano
+  }
+  
+  public mostrarArma(): void {
+    console.log(`Arma: ${this.tipo} - Dano: ${this.dano}`)
   }
 }
 

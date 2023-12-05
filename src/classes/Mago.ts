@@ -13,6 +13,17 @@ class Mago extends ClasseBase {
             arma: new Cajado()
         })
     }
+    
+     public mostrarStatus(): void {
+        console.log('🪄 -------  ||| ### ||| ------- 🪄')
+        console.table({
+            vida: this.vida,
+            energia: this.energia,
+            ataque: this.ataque,
+            defesa: this.defesa,
+        })
+        console.log('🪄 -------  ||| ### ||| ------- 🪄')
+    }
 }
 
 export { Mago }

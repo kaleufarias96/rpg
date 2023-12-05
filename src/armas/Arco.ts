@@ -7,6 +7,10 @@ class Arco extends ArmaBase {
       tipo: 'Arco'
     });
   }
+  
+  public mostrarArma(): void {
+    console.log(`🏹 Arma: ${this.tipo} - Dano: ${this.dano} 🏹`)
+  }
 }
 
 export { Arco };

@@ -7,6 +7,10 @@ class Espada extends ArmaBase {
       tipo: 'Espada'
     });
   }
+  
+  public mostrarArma(): void {
+    console.log(`⚔️ Arma: ${this.tipo} - Dano: ${this.dano} ⚔️`)
+  }
 }
 
 export { Espada };

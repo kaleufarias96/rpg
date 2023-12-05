@@ -1,9 +1,9 @@
 import { ClasseBase } from './classes/ClasseBase'
 
 class Identificacao {
-  nome: string
-  raca: string
-  classe: ClasseBase
+  public nome: string
+  public raca: string
+  public classe: ClasseBase
   
   constructor(valores: { nome: string, raca: string, classe: ClasseBase }) {
     this.nome = valores.nome

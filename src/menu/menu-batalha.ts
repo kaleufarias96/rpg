@@ -6,20 +6,22 @@ import { Arqueiro } from "../classes/Arqueiro";
 import { Mago } from "../classes/Mago";
 import { ArmaBase } from "../armas/ArmaBase";
 import { Personagem } from "../Personagem";
+import { Monstro } from "../classes/Monstro";
 
 const teclado = PromptSync();
 let opcao: number = 0;
 
 async function menuBatalha(personagem: Personagem) {
-    let classe;
+    let continueWhile = true
     
     while (opcao != 9) {
       const monstro = gerarMonstro(personagem.score);
         console.log("======Menu de Batalha!======");
         console.log("Inimigo encontrado:");
         monstro.identificacao.classe.mostrarStatus();
-        console.log("| 1 - Entrar em combate     |");
-        console.log("| 2 - Não combater/Proximo  |");
+        console.log("| 1 - Entrar em combate          |");
+        console.log("| 2 - Não combater/Proximo       |");
+        console.log("| 3 - Voltar ao menu personagem  |");
         
         let opcao = teclado("Digite uma opção: ");
         
@@ -30,21 +32,23 @@ async function menuBatalha(personagem: Personagem) {
             case "2":
                 console.clear();
                 break;
+            case "3":
+                console.clear();
+                continueWhile = false
+                break;
             default:
                 break;
         }
         
-        if (classe) {
+        if (!continueWhile) {
             break;
         }
     }
-    
-    return classe;
 }
 
 function gerarMonstro(score: number) {
   const gerarAtributo = (min: number, max: number) => Math.floor(min + max * Math.random() * (score * 0.1))
-  const classe = new ClasseBase({
+  const classe = new Monstro({
       ataque: gerarAtributo(10, 50),
       defesa: gerarAtributo(0, 10),
       energia: gerarAtributo(50, 100),

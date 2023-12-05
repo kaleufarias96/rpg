@@ -7,6 +7,10 @@ class Cajado extends ArmaBase {
       tipo: 'Cajado'
     });
   }
+  
+  public mostrarArma(): void {
+    console.log(`🪄 Arma: ${this.tipo} - Dano: ${this.dano} 🪄`)
+  }
 }
 
 export { Cajado };
